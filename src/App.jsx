@@ -1,4 +1,6 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import './App.css';
+
+import { useState, useRef, useEffect, useCallback } from 'react';
 import {
   Upload,
   Users,
@@ -326,6 +328,13 @@ const App = () => {
     };
     setAdditionalTexts(prev => [...prev, newText]);
     setSelectedElementId(newText.id);
+  };
+
+  const addHeader = () => {
+    setEmailConfig(prev => ({
+      ...prev,
+      headers: [...prev.headers, { id: generateId(), key: '', value: '' }]
+    }));
   };
 
   const updateParticipants = (text) => {
@@ -853,7 +862,11 @@ const App = () => {
             <div
               ref={containerRef}
               className="relative bg-white shadow-2xl touch-none select-none overflow-hidden rounded-xl border border-gray-200"
-              style={{ width: '100%', maxWidth: '850px', aspectRatio: '1.414/1' }}
+              style={{
+                width: '100%',
+                maxWidth: '850px',
+                // aspectRatio: '1.414/1' 
+              }}
             >
               <div ref={canvasRef} className="w-full h-full relative">
                 <img src={baseTemplate} className="w-full h-full object-contain pointer-events-none" alt="Template" />

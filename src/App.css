@@ -1,3 +1,5 @@
 button {
   cursor: pointer;
+  /* transition: none !important;
+  -webkit-transition: none !important; */
 }

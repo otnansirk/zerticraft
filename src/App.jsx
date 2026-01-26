@@ -795,16 +795,31 @@ const App = () => {
                     <span className="text-[10px] text-gray-500 font-semibold block">Color</span>
                     <input type="color" className="w-10 h-8 p-1 border border-gray-200 rounded-lg cursor-pointer bg-white" value={nameSettings.color} onChange={(e) => setNameSettings(prev => ({ ...prev, color: e.target.value }))} />
                   </div>
-                  <div className="space-y-1">
+                  {/* <div className="space-y-1">
                     <span className="text-[10px] text-gray-500 font-semibold block">Align</span>
                     <div className="flex border border-gray-200 rounded-lg overflow-hidden">
-                      {['left', 'center', 'right'].map(a => (
-                        <button key={a} onClick={() => setNameSettings(prev => ({ ...prev, textAlign: a }))} className={`flex-1 p-2 transition-colors ${nameSettings.textAlign === a ? 'bg-indigo-600 text-white' : 'bg-white text-gray-500'}`}>
-                          {a === 'left' ? <AlignLeft className="w-3.5 h-3.5 mx-auto" /> : a === 'center' ? <AlignCenter className="w-3.5 h-3.5 mx-auto" /> : <AlignRight className="w-3.5 h-3.5 mx-auto" />}
-                        </button>
-                      ))}
+                      {[
+                        {
+                          label: 'Left',
+                          icon: <AlignLeft className="w-3.5 h-3.5 mx-auto" />
+                        },
+                        {
+                          label: 'Center',
+                          icon: <AlignCenter className="w-3.5 h-3.5 mx-auto" />
+                        },
+                        {
+                          label: 'Right',
+                          icon: <AlignRight className="w-3.5 h-3.5 mx-auto" />
+                        }
+                      ].map((item, key) => {
+                        return (
+                          <button key={key} onClick={() => setNameSettings(prev => ({ ...prev, textAlign: item.label.toLowerCase() }))} className={`flex-1 p-2 transition-colors ${nameSettings.textAlign == item.label.toLowerCase() ? 'bg-indigo-600 text-white' : 'bg-white text-gray-500'}`}>
+                            {item.icon}
+                          </button>
+                        )
+                      })}
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
@@ -952,9 +967,15 @@ const App = () => {
           </div>
         ) : (
           <div className="text-center opacity-90 flex flex-col items-center bg-white/70 p-12 rounded-3xl backdrop-blur shadow-lg border border-gray-200">
-            <ImageIcon className="w-20 h-20 mb-4 text-indigo-500" />
-            <h2 className="text-2xl font-bold text-gray-700">Waiting for Template...</h2>
-            <p className="text-sm mt-2 text-gray-500">Upload your design base from the sidebar to start.</p>
+            <ImageIcon className="w-24 h-24 mb-6 text-indigo-400" />
+            <h2 className="text-2xl font-bold text-slate-700">Waiting for Template...</h2>
+            <p className="text-base mt-3 text-slate-500 max-w-md">Upload your design base to start customizing certificates.</p>
+            <div className="mt-6 relative border-2 border-dashed border-slate-300 rounded-2xl p-8 text-center bg-slate-50 hover:border-indigo-400 transition-colors">
+              <input type="file" accept="image/*" className="absolute inset-0 opacity-0 cursor-pointer" onChange={handleTemplateUpload} />
+              <span className="text-lg text-slate-600 flex items-center justify-center gap-3">
+                <Upload className="w-6 h-6" /> Click to upload template
+              </span>
+            </div>
           </div>
         )}
       </main>

@@ -18,6 +18,8 @@ import {
   AlertCircle,
   FileText,
   Plus,
+  Minus,
+  RefreshCw,
   Loader2,
   Mail,
   Send,
@@ -216,6 +218,9 @@ const App = () => {
   const [validationErrors, setValidationErrors] = useState({});
   const [emailStatusModalOpen, setEmailStatusModalOpen] = useState(false);
   const [emailStatuses, setEmailStatuses] = useState([]);
+  const [previewModalOpen, setPreviewModalOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState(null);
+  const [zoomLevel, setZoomLevel] = useState(100);
   const [isExporting, setIsExporting] = useState(false);
   const [exportProgress, setExportProgress] = useState(0);
 
@@ -796,6 +801,38 @@ const App = () => {
     }
   };
 
+  // Function to generate preview of the current certificate
+  const generatePreview = async () => {
+    if (!baseTemplate) {
+      setErrors(["Please upload a certificate template first."]);
+      return;
+    }
+
+    try {
+      // Generate the preview using the same rendering function as PDF generation
+      const imgData = await renderManualCanvas(activeParticipantIndex);
+      setPreviewImage(imgData);
+      setZoomLevel(100); // Reset zoom level when opening preview
+      setPreviewModalOpen(true);
+    } catch (err) {
+      console.error("Error generating preview:", err);
+      setErrors(["Failed to generate preview."]);
+    }
+  };
+
+  // Zoom functions
+  const zoomIn = () => {
+    setZoomLevel(prev => Math.min(prev + 25, 200)); // Max zoom 200%
+  };
+
+  const zoomOut = () => {
+    setZoomLevel(prev => Math.max(prev - 25, 50)); // Min zoom 50%
+  };
+
+  const resetZoom = () => {
+    setZoomLevel(100);
+  };
+
   const filteredFonts = GOOGLE_FONTS.filter(f => f.name.toLowerCase().includes(fontSearch.toLowerCase()));
 
   const handleColorTextChange = (val) => {
@@ -1076,7 +1113,17 @@ const App = () => {
               </button>
             </>
           )}
-          {errors.length > 0 && <div className="p-3 bg-red-50 text-red-600 text-xs rounded-xl border border-red-100">{errors.map((e, i) => <p key={i}>• {e}</p>)}</div>}
+          {errors.map((error, index) => (
+            <div key={index} className="p-3 bg-red-50 text-red-600 text-xs rounded-xl border border-red-100 flex justify-between items-start gap-2 mb-2">
+              <div>{error}</div>
+              <button
+                onClick={() => setErrors(prev => prev.filter((_, i) => i !== index))}
+                className="text-red-500 hover:text-red-700"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -1093,11 +1140,14 @@ const App = () => {
               </div>
 
               <div className="flex gap-2">
+                <button onClick={generatePreview} className="flex items-center gap-2 px-4 py-2.5 bg-purple-600 text-white rounded-full shadow-md hover:bg-purple-700 text-xs font-bold">
+                  <ImageIcon className="w-3.5 h-3.5" /> Preview
+                </button>
                 <button onClick={handleSingleExport} disabled={isExporting} className="flex items-center gap-2 px-4 py-2.5 bg-indigo-600 text-white rounded-full shadow-md hover:bg-indigo-700 text-xs font-bold disabled:bg-gray-400">
                   {isExporting ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Download className="w-3.5 h-3.5" />} Export Current
                 </button>
                 <button onClick={handleSingleEmail} disabled={isSending || !emailConfig.apiUrl} className="flex items-center gap-2 px-4 py-2.5 bg-emerald-600 text-white rounded-full shadow-md hover:bg-emerald-700 text-xs font-bold disabled:bg-gray-400">
-                  {isSending ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Mail className="w-3.5 h-3.5" />} Email Current
+                  {isSending ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Mail className="w-3.5 h-3.5" />} Send Email
                 </button>
               </div>
             </div>
@@ -1185,6 +1235,22 @@ const App = () => {
               </div>
             </div>
             <p className="text-[11px] text-gray-400 font-medium italic">Click any text or image to start editing its specific styles and position.</p>
+            <div className="flex gap-2 mt-3">
+              <button
+                onClick={() => setActiveParticipantIndex(p => Math.max(0, p - 1))}
+                disabled={activeParticipantIndex === 0}
+                className="p-2 rounded-full bg-white border border-gray-200 shadow-md hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                <ChevronLeft className="w-4 h-4 text-gray-600" />
+              </button>
+              <button
+                onClick={() => setActiveParticipantIndex(p => Math.min(participants.length - 1, p + 1))}
+                disabled={activeParticipantIndex >= participants.length - 1}
+                className="p-2 rounded-full bg-white border border-gray-200 shadow-md hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                <ChevronRight className="w-4 h-4 text-gray-600" />
+              </button>
+            </div>
           </div>
         ) : (
           <div className="text-center opacity-70 flex flex-col items-center bg-white/50 p-12 rounded-2xl backdrop-blur-sm">
@@ -1268,6 +1334,72 @@ const App = () => {
                 className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors font-medium"
               >
                 Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Preview Modal */}
+      {previewModalOpen && (
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-90 flex items-center justify-center z-50 p-4">
+          {/* Close button in top-right corner */}
+          <button
+            onClick={() => setPreviewModalOpen(false)}
+            className="absolute top-4 right-4 text-white hover:text-gray-300 z-50"
+          >
+            <X className="w-8 h-8" />
+          </button>
+
+          <div className="relative w-full h-full flex items-center justify-center">
+            {previewImage ? (
+              <div className="relative flex items-center justify-center w-full h-full">
+                <img
+                  src={previewImage}
+                  alt="Certificate Preview"
+                  className="shadow-xl rounded-lg border border-gray-700 max-w-full max-h-full object-contain"
+                  style={{
+                    transform: `scale(${zoomLevel / 100})`,
+                    transformOrigin: 'center center'
+                  }}
+                />
+              </div>
+            ) : (
+              <div className="text-center text-gray-300">
+                <Loader2 className="w-8 h-8 animate-spin mx-auto mb-3" />
+                <p>Loading preview...</p>
+              </div>
+            )}
+
+            {/* Zoom controls in bottom-right corner */}
+            <div className="absolute bottom-8 right-8 bg-gray-800 bg-opacity-80 backdrop-blur-sm rounded-xl p-3 flex items-center gap-2">
+              <button
+                onClick={zoomOut}
+                className="text-white hover:bg-gray-700 rounded-full p-2"
+                title="Zoom Out"
+              >
+                <Minus className="w-5 h-5" />
+              </button>
+              <span className="text-white text-sm min-w-[50px] text-center">{zoomLevel}%</span>
+              <button
+                onClick={zoomIn}
+                className="text-white hover:bg-gray-700 rounded-full p-2"
+                title="Zoom In"
+              >
+                <Plus className="w-5 h-5" />
+              </button>
+              <button
+                onClick={resetZoom}
+                className="text-white hover:bg-gray-700 rounded-full p-2 ml-2"
+                title="Reset Zoom"
+              >
+                <RefreshCw className="w-5 h-5" />
+              </button>
+              <button
+                onClick={handleSingleExport}
+                className="ml-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-medium flex items-center gap-2"
+              >
+                <Download className="w-4 h-4" /> Download
               </button>
             </div>
           </div>

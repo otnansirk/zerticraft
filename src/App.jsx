@@ -29,6 +29,7 @@ import {
   Search,
   Type as TypeIcon
 } from 'lucide-react';
+import { DEFAULT_TEMPLATES } from './utils/constants';
 
 // Helper for unique IDs
 const generateId = () => Math.random().toString(36).substr(2, 9);
@@ -654,11 +655,26 @@ const App = () => {
                   <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-50" value={eventName} onChange={(e) => setEventName(e.target.value)} placeholder="Event Title" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Template</label>
+                  <label className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Background Template</label>
+                  {/* Default Templates Grid */}
+                  <div className="grid grid-cols-2 gap-2 mb-3">
+                    {DEFAULT_TEMPLATES.map(tmp => (
+                      <div
+                        key={tmp.id}
+                        onClick={() => setBaseTemplate(tmp.url)}
+                        className={`group relative aspect-[1.414/1] rounded-lg border-2 overflow-hidden cursor-pointer transition-all ${baseTemplate === tmp.url ? 'border-indigo-500 ring-2 ring-indigo-200' : 'border-gray-100 hover:border-indigo-300'}`}
+                      >
+                        <img src={tmp.thumbnail} className="w-full h-full object-cover" alt={tmp.name} />
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                          <span className="text-[10px] text-white font-bold">{tmp.name}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                   <div className="relative border-2 border-dashed border-gray-300 rounded-xl p-4 text-center bg-gray-50 hover:border-indigo-400 transition-colors">
                     <input type="file" accept="image/*" className="absolute inset-0 opacity-0 cursor-pointer" onChange={handleTemplateUpload} />
                     <Upload className="w-5 h-5 text-gray-400 mx-auto mb-1" />
-                    <span className="text-xs text-gray-600">{baseTemplate ? "Replace template" : "Upload template"}</span>
+                    <span className="text-xs text-gray-600">{baseTemplate ? "Replace Template" : "Upload Template"}</span>
                   </div>
                 </div>
               </div>

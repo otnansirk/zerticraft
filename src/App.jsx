@@ -801,6 +801,22 @@ const App = () => {
     }
   };
 
+  // Function to download sample participant CSV
+  const downloadSampleCSV = () => {
+    const csvContent = "Name,Email\nJohn Doe,john.doe@example.com\nJane Smith,jane.smith@example.com\nBob Johnson,bob.johnson@example.com";
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'sample-participants.csv');
+    link.style.visibility = 'hidden';
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   // Function to generate preview of the current certificate
   const generatePreview = async () => {
     if (!baseTemplate) {
@@ -980,7 +996,19 @@ const App = () => {
               <div className="space-y-3">
                 <div className="flex justify-between items-center text-xs font-semibold text-gray-500 uppercase tracking-wide">
                   <label>Recipient List</label>
-                  <label className="text-indigo-600 cursor-pointer hover:underline">Import CSV <input type="file" accept=".csv,.txt" className="hidden" onChange={handleCsvImport} /></label>
+                  <div className="flex gap-2">
+                    <button
+                      type="button"
+                      onClick={downloadSampleCSV}
+                      className="text-[10px] bg-gray-200 text-gray-700 px-2 py-1 rounded font-bold flex items-center gap-1 hover:bg-gray-300"
+                    >
+                      <FileText className="w-3 h-3" /> Sample CSV
+                    </button>
+                    <label className="text-[10px] bg-indigo-600 text-white px-2 py-1 rounded font-bold flex items-center gap-1 hover:bg-indigo-700 cursor-pointer">
+                      <Upload className="w-3 h-3" /> Import CSV
+                      <input type="file" accept=".csv,.txt" className="hidden" onChange={handleCsvImport} />
+                    </label>
+                  </div>
                 </div>
                 <textarea rows="3" placeholder="Name, Email" className={`w-full px-4 py-3 rounded-xl border ${validationErrors.participants ? 'border-red-500' : 'border-gray-200'} text-xs font-mono outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-50`} value={participantInput} onChange={(e) => {updateParticipants(e.target.value); if(validationErrors.participants) setValidationErrors(prev => ({...prev, participants: undefined}));}} />
                 {validationErrors.participants && <p className="text-red-500 text-xs mt-1">{validationErrors.participants}</p>}

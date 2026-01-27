@@ -1,5 +1,5 @@
 {
-  "name": "certipro",
+  "name": "certicraft",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "html2canvas-pro": "^1.6.6",
     "jspdf": "^4.0.0",
     "lucide-react": "^0.563.0",
     "react": "^19.2.0",

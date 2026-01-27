@@ -625,7 +625,7 @@ const App = () => {
               <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
                 <FileText className="w-6 h-6" />
               </div>
-              <h1 className="text-xl font-bold">CertifyGen Pro</h1>
+              <h1 className="text-xl font-bold">Certicraft</h1>
             </div>
             <div className="flex gap-1 bg-white/20 p-1 rounded-lg backdrop-blur-sm">
               <button

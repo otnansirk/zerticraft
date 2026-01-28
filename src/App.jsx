@@ -490,7 +490,7 @@ const App = () => {
         // Calculate text width for underline
         const textMetrics = ctx.measureText(txt.content);
         const adjustedTextX = txt.textAlign === 'center' ? textX - textMetrics.width / 2 :
-                             txt.textAlign === 'right' ? textX - textMetrics.width : textX;
+          txt.textAlign === 'right' ? textX - textMetrics.width : textX;
 
         // Draw underline
         ctx.beginPath();
@@ -503,7 +503,7 @@ const App = () => {
         // Calculate text width for strikethrough
         const textMetrics = ctx.measureText(txt.content);
         const adjustedTextX = txt.textAlign === 'center' ? textX - textMetrics.width / 2 :
-                             txt.textAlign === 'right' ? textX - textMetrics.width : textX;
+          txt.textAlign === 'right' ? textX - textMetrics.width : textX;
 
         // Draw strikethrough
         ctx.beginPath();
@@ -535,7 +535,7 @@ const App = () => {
       // Calculate text width for underline
       const textMetrics = ctx.measureText(participant?.name || "[Name]");
       const adjustedTextX = nameSettings.textAlign === 'center' ? textX - textMetrics.width / 2 :
-                           nameSettings.textAlign === 'right' ? textX - textMetrics.width : textX;
+        nameSettings.textAlign === 'right' ? textX - textMetrics.width : textX;
 
       // Draw underline
       ctx.beginPath();
@@ -548,7 +548,7 @@ const App = () => {
       // Calculate text width for strikethrough
       const textMetrics = ctx.measureText(participant?.name || "[Name]");
       const adjustedTextX = nameSettings.textAlign === 'center' ? textX - textMetrics.width / 2 :
-                           nameSettings.textAlign === 'right' ? textX - textMetrics.width : textX;
+        nameSettings.textAlign === 'right' ? textX - textMetrics.width : textX;
 
       // Draw strikethrough
       ctx.beginPath();
@@ -867,15 +867,12 @@ const App = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex flex-col md:flex-row font-sans text-slate-900">
       {/* Sidebar */}
       <div className="w-full md:w-96 bg-white border-r border-gray-200 flex flex-col h-screen shrink-0 shadow-lg overflow-hidden">
-        <header className="p-6 border-b border-gray-100 shrink-0 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+        <header className="p-6 border-b border-gray-100 shrink-0 bg-gradient-to- from-indigo-600 to-purple-600 text-white">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
-                <FileText className="w-6 h-6" />
-              </div>
-              <h1 className="text-xl font-bold">Zerticraft</h1>
+              <img src="/logo-right-text.png" alt="Zerticraft Logo" className="h-10" />
             </div>
-            <div className="flex gap-1 bg-white/20 p-1 rounded-lg backdrop-blur-sm">
+            <div className="flex gap-1 bg-gradient-to-r from-indigo-600 to-purple-600 p-1 rounded-lg backdrop-blur-sm">
               <button
                 onClick={() => setActiveTab('design')}
                 className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all flex items-center gap-1 ${activeTab === 'design' ? 'bg-white text-indigo-600 shadow' : 'text-white/80 hover:text-white'}`}
@@ -899,7 +896,7 @@ const App = () => {
               <div className="grid grid-cols-1 gap-5">
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Event Name</label>
-                  <input type="text" className={`w-full px-4 py-3 rounded-xl border ${validationErrors.eventName ? 'border-red-500' : 'border-gray-200'} outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-50`} value={eventName} onChange={(e) => {setEventName(e.target.value); if(validationErrors.eventName) setValidationErrors(prev => ({...prev, eventName: undefined}));}} placeholder="Event Title" />
+                  <input type="text" className={`w-full px-4 py-3 rounded-xl border ${validationErrors.eventName ? 'border-red-500' : 'border-gray-200'} outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-50`} value={eventName} onChange={(e) => { setEventName(e.target.value); if (validationErrors.eventName) setValidationErrors(prev => ({ ...prev, eventName: undefined })); }} placeholder="Event Title" />
                   {validationErrors.eventName && <p className="text-red-500 text-xs mt-1">{validationErrors.eventName}</p>}
                 </div>
                 <div className="space-y-2">
@@ -909,7 +906,7 @@ const App = () => {
                     {DEFAULT_TEMPLATES.map(tmp => (
                       <div
                         key={tmp.id}
-                        onClick={() => {setBaseTemplate(tmp.url); if(validationErrors.template) setValidationErrors(prev => ({...prev, template: undefined}));}}
+                        onClick={() => { setBaseTemplate(tmp.url); if (validationErrors.template) setValidationErrors(prev => ({ ...prev, template: undefined })); }}
                         className={`group relative aspect-[1.414/1] rounded-lg border-2 overflow-hidden cursor-pointer transition-all ${baseTemplate === tmp.url ? 'border-indigo-500 ring-2 ring-indigo-200' : 'border-gray-100 hover:border-indigo-300'}`}
                       >
                         <img src={tmp.thumbnail} className="w-full h-full object-cover" alt={tmp.name} />
@@ -920,7 +917,7 @@ const App = () => {
                     ))}
                   </div>
                   <div className={`relative border-2 border-dashed ${validationErrors.template ? 'border-red-500' : 'border-gray-300'} rounded-xl p-4 text-center bg-gray-50 hover:border-indigo-400 transition-colors`}>
-                    <input type="file" accept="image/*" className="absolute inset-0 opacity-0 cursor-pointer" onChange={(e) => {handleTemplateUpload(e); if(validationErrors.template) setValidationErrors(prev => ({...prev, template: undefined}));}} />
+                    <input type="file" accept="image/*" className="absolute inset-0 opacity-0 cursor-pointer" onChange={(e) => { handleTemplateUpload(e); if (validationErrors.template) setValidationErrors(prev => ({ ...prev, template: undefined })); }} />
                     <Upload className="w-5 h-5 text-gray-400 mx-auto mb-1" />
                     <span className="text-xs text-gray-600">{baseTemplate ? "Replace Template" : "Upload Template"}</span>
                   </div>
@@ -1012,7 +1009,7 @@ const App = () => {
                     </label>
                   </div>
                 </div>
-                <textarea rows="3" placeholder="Name, Email" className={`w-full px-4 py-3 rounded-xl border ${validationErrors.participants ? 'border-red-500' : 'border-gray-200'} text-xs font-mono outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-50`} value={participantInput} onChange={(e) => {updateParticipants(e.target.value); if(validationErrors.participants) setValidationErrors(prev => ({...prev, participants: undefined}));}} />
+                <textarea rows="3" placeholder="Name, Email" className={`w-full px-4 py-3 rounded-xl border ${validationErrors.participants ? 'border-red-500' : 'border-gray-200'} text-xs font-mono outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-50`} value={participantInput} onChange={(e) => { updateParticipants(e.target.value); if (validationErrors.participants) setValidationErrors(prev => ({ ...prev, participants: undefined })); }} />
                 {validationErrors.participants && <p className="text-red-500 text-xs mt-1">{validationErrors.participants}</p>}
               </div>
 
@@ -1349,12 +1346,11 @@ const App = () => {
                       <td className="py-3 px-4 text-sm text-gray-900">{status.name}</td>
                       <td className="py-3 px-4 text-sm text-gray-900">{status.email}</td>
                       <td className="py-3 px-4">
-                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                          status.success === true ? 'bg-green-100 text-green-800' :
+                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${status.success === true ? 'bg-green-100 text-green-800' :
                           status.success === false ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800'
-                        }`}>
+                          }`}>
                           {status.success === true ? 'Success' :
-                           status.success === false ? 'Error' : 'Sending'}
+                            status.success === false ? 'Error' : 'Sending'}
                         </span>
                       </td>
                       <td className="py-3 px-4 text-sm text-gray-900 max-w-xs truncate" title={status.message}>{status.message}</td>
@@ -1363,11 +1359,10 @@ const App = () => {
                           <button
                             onClick={() => handleRetryEmail(status.index)}
                             disabled={status.success === null}
-                            className={`px-3 py-1 rounded text-xs transition-colors ${
-                              status.success === null
-                                ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
-                                : 'bg-indigo-600 text-white hover:bg-indigo-700'
-                            }`}
+                            className={`px-3 py-1 rounded text-xs transition-colors ${status.success === null
+                              ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
+                              : 'bg-indigo-600 text-white hover:bg-indigo-700'
+                              }`}
                           >
                             Retry
                           </button>

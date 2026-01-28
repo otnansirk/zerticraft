@@ -1,7 +1,7 @@
-# Certicraft - Project Guide
+# Zerticraft - Project Guide
 
 ## Overview
-Certicraft is a React-based certificate generator application that allows users to create, customize, and distribute certificates. The application features a drag-and-drop interface for positioning certificate elements and supports bulk email distribution via custom API endpoints.
+Zerticraft is a React-based certificate generator application that allows users to create, customize, and distribute certificates. The application features a drag-and-drop interface for positioning certificate elements and supports bulk email distribution via custom API endpoints.
 
 ## Technology Stack
 - **Framework**: React 19.2.0
@@ -13,7 +13,7 @@ Certicraft is a React-based certificate generator application that allows users 
 
 ## Project Structure
 ```
-certicraft/
+zerticraft/
 ├── public/
 │   ├── vite.svg
 │   └── default-templates/

@@ -34,6 +34,7 @@ import {
   Italic as ItalicIcon,
   Underline as UnderlineIcon
 } from 'lucide-react';
+import DocumentationPage from './documentations';
 import { DEFAULT_TEMPLATES } from './utils/constants';
 
 // Helper for unique IDs
@@ -221,6 +222,7 @@ const App = () => {
   const [previewModalOpen, setPreviewModalOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState(null);
   const [zoomLevel, setZoomLevel] = useState(100);
+  const [showDocumentation, setShowDocumentation] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
   const [exportProgress, setExportProgress] = useState(0);
 
@@ -871,7 +873,7 @@ const App = () => {
               <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
                 <FileText className="w-6 h-6" />
               </div>
-              <h1 className="text-xl font-bold">Certicraft</h1>
+              <h1 className="text-xl font-bold">Zerticraft</h1>
             </div>
             <div className="flex gap-1 bg-white/20 p-1 rounded-lg backdrop-blur-sm">
               <button
@@ -1157,7 +1159,27 @@ const App = () => {
 
       {/* Main Preview Area */}
       <main className="flex-1 p-8 flex flex-col items-center justify-start bg-gradient-to-br from-gray-50 to-gray-100 overflow-auto relative">
-        {baseTemplate ? (
+        {/* Documentation button in top corner */}
+        <button
+          onClick={() => setShowDocumentation(true)}
+          className="absolute top-4 right-4 bg-gray-200 text-gray-700 px-3 py-2 rounded-lg font-bold flex items-center gap-2 hover:bg-gray-300 text-sm z-10"
+        >
+          <FileText className="w-4 h-4" /> Documentation
+        </button>
+
+        {showDocumentation ? (
+          <div className="w-full h-full">
+            <div className="absolute top-4 right-4 z-20">
+              <button
+                onClick={() => setShowDocumentation(false)}
+                className="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg font-bold flex items-center gap-2 hover:bg-gray-300 text-sm"
+              >
+                <X className="w-4 h-4" /> Close Docs
+              </button>
+            </div>
+            <DocumentationPage />
+          </div>
+        ) : baseTemplate ? (
           <div className="w-full max-w-5xl flex flex-col items-center gap-6">
             <div className="flex flex-wrap items-center justify-center gap-3">
               <div className="flex items-center gap-4 bg-white px-4 py-2.5 rounded-full shadow-md border border-gray-200">
@@ -1186,7 +1208,7 @@ const App = () => {
               style={{
                 width: '100%',
                 maxWidth: '850px',
-                // aspectRatio: '1.414/1' 
+                // aspectRatio: '1.414/1'
               }}
             >
               <div ref={canvasRef} className="w-full h-full relative">

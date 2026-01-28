@@ -1440,6 +1440,32 @@ const App = () => {
               >
                 <RefreshCw className="w-5 h-5" />
               </button>
+              <div className="flex gap-2 ml-2">
+                <button
+                  onClick={async () => {
+                    const newIndex = Math.max(0, activeParticipantIndex - 1);
+                    setActiveParticipantIndex(newIndex);
+                    const imgData = await renderManualCanvas(newIndex);
+                    setPreviewImage(imgData);
+                  }}
+                  disabled={activeParticipantIndex === 0}
+                  className="p-2 rounded-full bg-white border border-gray-200 shadow-md hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  <ChevronLeft className="w-4 h-4 text-gray-600" />
+                </button>
+                <button
+                  onClick={async () => {
+                    const newIndex = Math.min(participants.length - 1, activeParticipantIndex + 1);
+                    setActiveParticipantIndex(newIndex);
+                    const imgData = await renderManualCanvas(newIndex);
+                    setPreviewImage(imgData);
+                  }}
+                  disabled={activeParticipantIndex >= participants.length - 1}
+                  className="p-2 rounded-full bg-white border border-gray-200 shadow-md hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  <ChevronRight className="w-4 h-4 text-gray-600" />
+                </button>
+              </div>
               <button
                 onClick={handleSingleExport}
                 className="ml-4 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-medium flex items-center gap-2"

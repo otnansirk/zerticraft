@@ -9,8 +9,8 @@ const DocumentationPage = () => {
       <div className="max-w-4xl mx-auto">
         <header className="mb-8 text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="p-3 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl">
-              <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-1 rounded">
+            <div className="p-3 bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl">
+              <div className="bg-gradient-to-r from-primary-600 to-primary-500 p-1 rounded">
                 <FileText className="w-8 h-8 text-white" />
               </div>
             </div>
@@ -25,26 +25,26 @@ const DocumentationPage = () => {
             <div className="flex bg-gray-200 rounded-lg p-1">
               <button
                 className={`px-6 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'documentation'
-                  ? 'bg-white text-indigo-600 shadow'
+                  ? 'bg-white text-primary-600 shadow'
                   : 'text-gray-600 hover:text-gray-800'
                   }`}
                 onClick={() => setActiveTab('documentation')}
               >
                 <div className="flex items-center gap-2">
-                  <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-1 rounded">
+                  <div className="bg-gradient-to-r from-primary-600 to-primary-500 p-1 rounded">
                     <FileText className="w-3 h-3 text-white" />
                   </div> Documentation
                 </div>
               </button>
               <button
                 className={`px-6 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'privacy'
-                  ? 'bg-white text-indigo-600 shadow'
+                  ? 'bg-white text-primary-600 shadow'
                   : 'text-gray-600 hover:text-gray-800'
                   }`}
                 onClick={() => setActiveTab('privacy')}
               >
                 <div className="flex items-center gap-2">
-                  <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-1 rounded">
+                  <div className="bg-gradient-to-r from-primary-600 to-primary-500 p-1 rounded">
                     <Shield className="w-3 h-3 text-white" />
                   </div> Privacy Policy
                 </div>
@@ -58,15 +58,15 @@ const DocumentationPage = () => {
           <div>
             <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
               <div className="flex items-center gap-3 mb-6">
-                <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-1.5 rounded-md">
+                <div className="bg-gradient-to-r from-primary-600 to-primary-500 p-1.5 rounded-md">
                   <Zap className="w-5 h-5 text-white" />
                 </div>
                 <h2 className="text-2xl font-bold text-gray-800">Getting Started</h2>
               </div>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <div className="mt-1 w-6 h-6 rounded-full bg-indigo-100 flex items-center justify-center">
-                    <span className="text-xs font-bold text-indigo-600">1</span>
+                  <div className="mt-1 w-6 h-6 rounded-full bg-primary-100 flex items-center justify-center">
+                    <span className="text-xs font-bold text-primary-600">1</span>
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800">Upload Certificate Template</h3>
@@ -74,8 +74,8 @@ const DocumentationPage = () => {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="mt-1 w-6 h-6 rounded-full bg-indigo-100 flex items-center justify-center">
-                    <span className="text-xs font-bold text-indigo-600">2</span>
+                  <div className="mt-1 w-6 h-6 rounded-full bg-primary-100 flex items-center justify-center">
+                    <span className="text-xs font-bold text-primary-600">2</span>
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800">Customize Certificate Elements</h3>
@@ -83,8 +83,8 @@ const DocumentationPage = () => {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="mt-1 w-6 h-6 rounded-full bg-indigo-100 flex items-center justify-center">
-                    <span className="text-xs font-bold text-indigo-600">3</span>
+                  <div className="mt-1 w-6 h-6 rounded-full bg-primary-100 flex items-center justify-center">
+                    <span className="text-xs font-bold text-primary-600">3</span>
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800">Add Participants</h3>
@@ -92,8 +92,8 @@ const DocumentationPage = () => {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="mt-1 w-6 h-6 rounded-full bg-indigo-100 flex items-center justify-center">
-                    <span className="text-xs font-bold text-indigo-600">4</span>
+                  <div className="mt-1 w-6 h-6 rounded-full bg-primary-100 flex items-center justify-center">
+                    <span className="text-xs font-bold text-primary-600">4</span>
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800">Configure Email API</h3>
@@ -105,7 +105,7 @@ const DocumentationPage = () => {
 
             <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
               <div className="flex items-center gap-3 mb-6">
-                <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-1.5 rounded-md">
+                <div className="bg-gradient-to-r from-primary-600 to-primary-500 p-1.5 rounded-md">
                   <Shield className="w-5 h-5 text-white" />
                 </div>
                 <h2 className="text-2xl font-bold text-gray-800">API Configuration</h2>
@@ -134,15 +134,15 @@ const DocumentationPage = () => {
                   </div>
                 </div>
 
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <h4 className="font-semibold text-blue-800 flex items-center gap-2">
-                    <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-1 rounded">
+                <div className="bg-primary-50 border border-primary-200 rounded-lg p-4">
+                  <h4 className="font-semibold text-primary-800 flex items-center gap-2">
+                    <div className="bg-gradient-to-r from-primary-600 to-primary-500 p-1 rounded">
                       <Code className="w-3 h-3 text-white" />
                     </div> Important Notes
                   </h4>
-                  <ul className="mt-2 space-y-1 text-blue-700 text-sm">
-                    <li>• The <code className="bg-blue-100 px-1 rounded text-xs">pdf</code> field contains the base64-encoded PDF data</li>
-                    <li>• The <code className="bg-blue-100 px-1 rounded text-xs">subject</code> and <code className="bg-blue-100 px-1 rounded text-xs">body</code> fields support template variables: <code className="bg-blue-100 px-1 rounded text-xs">{'{name}'}</code>, <code className="bg-blue-100 px-1 rounded text-xs">{'{email}'}</code>, <code className="bg-blue-100 px-1 rounded text-xs">{'{event}'}</code></li>
+                  <ul className="mt-2 space-y-1 text-primary-700 text-sm">
+                    <li>• The <code className="bg-primary-100 px-1 rounded text-xs">pdf</code> field contains the base64-encoded PDF data</li>
+                    <li>• The <code className="bg-primary-100 px-1 rounded text-xs">subject</code> and <code className="bg-primary-100 px-1 rounded text-xs">body</code> fields support template variables: <code className="bg-primary-100 px-1 rounded text-xs">{'{name}'}</code>, <code className="bg-primary-100 px-1 rounded text-xs">{'{email}'}</code>, <code className="bg-primary-100 px-1 rounded text-xs">{'{event}'}</code></li>
                     <li>• Ensure your API endpoint can handle large payloads due to the base64-encoded PDF data</li>
                   </ul>
                 </div>
@@ -151,7 +151,7 @@ const DocumentationPage = () => {
 
             <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
               <div className="flex items-center gap-3 mb-6">
-                <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-1.5 rounded-md">
+                <div className="bg-gradient-to-r from-primary-600 to-primary-500 p-1.5 rounded-md">
                   <Upload className="w-5 h-5 text-white" />
                 </div>
                 <h2 className="text-2xl font-bold text-gray-800">Participant Import Format</h2>
@@ -172,14 +172,14 @@ Bob Johnson,bob.johnson@example.com`}
 
             <div className="bg-white rounded-2xl shadow-lg p-8">
               <div className="flex items-center gap-3 mb-6">
-                <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-1.5 rounded-md">
+                <div className="bg-gradient-to-r from-primary-600 to-primary-500 p-1.5 rounded-md">
                   <Mail className="w-5 h-5 text-white" />
                 </div>
                 <h2 className="text-2xl font-bold text-gray-800">Email Distribution</h2>
               </div>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-1 rounded-full mt-0.5">
+                  <div className="bg-gradient-to-r from-primary-600 to-primary-500 p-1 rounded-full mt-0.5">
                     <ArrowRight className="w-3 h-3 text-white" />
                   </div>
                   <div>
@@ -188,7 +188,7 @@ Bob Johnson,bob.johnson@example.com`}
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-1 rounded-full mt-0.5">
+                  <div className="bg-gradient-to-r from-primary-600 to-primary-500 p-1 rounded-full mt-0.5">
                     <ArrowRight className="w-3 h-3 text-white" />
                   </div>
                   <div>
@@ -197,7 +197,7 @@ Bob Johnson,bob.johnson@example.com`}
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-1 rounded-full mt-0.5">
+                  <div className="bg-gradient-to-r from-primary-600 to-primary-500 p-1 rounded-full mt-0.5">
                     <ArrowRight className="w-3 h-3 text-white" />
                   </div>
                   <div>
@@ -211,7 +211,7 @@ Bob Johnson,bob.johnson@example.com`}
         ) : (
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <div className="flex items-center gap-3 mb-6">
-              <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-1.5 rounded-md">
+              <div className="bg-gradient-to-r from-primary-600 to-primary-500 p-1.5 rounded-md">
                 <Shield className="w-5 h-5 text-white" />
               </div>
               <h2 className="text-2xl font-bold text-gray-800">Privacy Policy</h2>

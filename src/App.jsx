@@ -872,16 +872,16 @@ const App = () => {
             <div className="flex items-center gap-3">
               <img src="/logo-right-text.png" alt="Zerticraft Logo" className="h-10" />
             </div>
-            <div className="flex gap-1 bg-gradient-to-r from-indigo-600 to-purple-600 p-1 rounded-lg backdrop-blur-sm">
+            <div className="flex gap-1 bg-gradient-to-r from-primary-600 to-primary-500 p-1 rounded-lg backdrop-blur-sm">
               <button
                 onClick={() => setActiveTab('design')}
-                className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all flex items-center gap-1 ${activeTab === 'design' ? 'bg-white text-indigo-600 shadow' : 'text-white/80 hover:text-white'}`}
+                className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all flex items-center gap-1 ${activeTab === 'design' ? 'bg-white text-primary-600 shadow' : 'text-white/80 hover:text-white'}`}
               >
                 <ImageIcon className="w-3" /> Design
               </button>
               <button
                 onClick={() => setActiveTab('email')}
-                className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all flex items-center gap-1 ${activeTab === 'email' ? 'bg-white text-indigo-600 shadow' : 'text-white/80 hover:text-white'}`}
+                className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all flex items-center gap-1 ${activeTab === 'email' ? 'bg-white text-primary-600 shadow' : 'text-white/80 hover:text-white'}`}
               >
                 <Mail className="w-3" /> Email
               </button>
@@ -931,7 +931,7 @@ const App = () => {
                   <label className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Text Assets</label>
                   <button
                     onClick={addTextAsset}
-                    className="text-[10px] bg-indigo-600 text-white px-2 py-1 rounded font-bold flex items-center gap-1 hover:bg-indigo-700"
+                    className="text-[10px] bg-primary-600 text-white px-2 py-1 rounded font-bold flex items-center gap-1 hover:bg-primary-700"
                   >
                     <Plus className="w-3 h-3" /> ADD TEXT
                   </button>
@@ -1003,7 +1003,7 @@ const App = () => {
                     >
                       <FileText className="w-3 h-3" /> Sample CSV
                     </button>
-                    <label className="text-[10px] bg-indigo-600 text-white px-2 py-1 rounded font-bold flex items-center gap-1 hover:bg-indigo-700 cursor-pointer">
+                    <label className="text-[10px] bg-primary-600 text-white px-2 py-1 rounded font-bold flex items-center gap-1 hover:bg-primary-700 cursor-pointer">
                       <Upload className="w-3 h-3" /> Import CSV
                       <input type="file" accept=".csv,.txt" className="hidden" onChange={handleCsvImport} />
                     </label>
@@ -1014,10 +1014,10 @@ const App = () => {
               </div>
 
               {/* Typography Studio - Dynamic Context */}
-              <div className="p-4 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl space-y-4 border border-indigo-100">
+              <div className="p-4 bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl space-y-4 border border-primary-100">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 font-bold text-indigo-800 text-xs"><Type className="w-4 h-4" /> Styling Settings</div>
-                  <span className="text-[9px] bg-indigo-200 text-indigo-700 px-2 py-0.5 rounded-full font-bold uppercase">
+                  <div className="flex items-center gap-2 font-bold text-primary-800 text-xs"><Type className="w-4 h-4" /> Styling Settings</div>
+                  <span className="text-[9px] bg-primary-200 text-primary-700 px-2 py-0.5 rounded-full font-bold uppercase">
                     {selectedElementId === 'participant-name' ? 'Name' : 'Text Block'}
                   </span>
                 </div>
@@ -1076,7 +1076,7 @@ const App = () => {
                     onClick={() => updateSelectedElementSettings({
                       fontWeight: selectedSettings?.fontWeight === 'bold' ? 'normal' : 'bold'
                     })}
-                    className={`flex-1 p-2 transition-colors ${selectedSettings?.fontWeight === 'bold' ? 'bg-indigo-600 text-white' : 'bg-white text-gray-500'}`}
+                    className={`flex-1 p-2 transition-colors ${selectedSettings?.fontWeight === 'bold' ? 'bg-green-600 text-white' : 'bg-white text-gray-500'}`}
                   >
                     <BoldIcon className="w-3.5 h-3.5 mx-auto" />
                   </button>
@@ -1084,7 +1084,7 @@ const App = () => {
                     onClick={() => updateSelectedElementSettings({
                       fontStyle: selectedSettings?.fontStyle === 'italic' ? 'normal' : 'italic'
                     })}
-                    className={`flex-1 p-2 transition-colors ${selectedSettings?.fontStyle === 'italic' ? 'bg-indigo-600 text-white' : 'bg-white text-gray-500'}`}
+                    className={`flex-1 p-2 transition-colors ${selectedSettings?.fontStyle === 'italic' ? 'bg-green-600 text-white' : 'bg-white text-gray-500'}`}
                   >
                     <ItalicIcon className="w-3.5 h-3.5 mx-auto" />
                   </button>
@@ -1092,7 +1092,7 @@ const App = () => {
                     onClick={() => updateSelectedElementSettings({
                       textDecoration: selectedSettings?.textDecoration === 'underline' ? 'none' : 'underline'
                     })}
-                    className={`flex-1 p-2 transition-colors ${selectedSettings?.textDecoration === 'underline' ? 'bg-indigo-600 text-white' : 'bg-white text-gray-500'}`}
+                    className={`flex-1 p-2 transition-colors ${selectedSettings?.textDecoration === 'underline' ? 'bg-green-600 text-white' : 'bg-white text-gray-500'}`}
                   >
                     <UnderlineIcon className="w-3.5 h-3.5 mx-auto" />
                   </button>
@@ -1107,7 +1107,7 @@ const App = () => {
                 </div> */}
               </div>
 
-              <button disabled={isExporting || !libsLoaded} onClick={exportPDFs} className={`w-full py-4 rounded-xl font-bold text-white shadow-lg transition-all flex items-center justify-center gap-3 ${isExporting || !libsLoaded ? 'bg-gray-400' : 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700'}`}>
+              <button disabled={isExporting || !libsLoaded} onClick={exportPDFs} className={`w-full py-4 rounded-xl font-bold text-white shadow-lg transition-all flex items-center justify-center gap-3 ${isExporting || !libsLoaded ? 'bg-gray-400' : 'bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-700 hover:to-primary-600'}`}>
                 {isExporting ? <><Loader2 className="w-5 h-5 animate-spin" /> Processing...</> : <><Download className="w-5 h-5" /> Export All ({participants.length})</>}
               </button>
             </>
@@ -1115,15 +1115,15 @@ const App = () => {
             <>
               {/* Email Tab */}
               <div className="space-y-5">
-                <div className="p-5 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl border border-emerald-100 shadow-sm space-y-4">
-                  <div className="flex items-center gap-2 font-bold text-emerald-800"><Globe className="w-4 h-4" /> API Configuration</div>
+                <div className="p-5 bg-gradient-to-br from-red-50 to-red-100 rounded-2xl border border-red-100 shadow-sm space-y-4">
+                  <div className="flex items-center gap-2 font-bold text-red-500"><Globe className="w-4 h-4" /> API Configuration</div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase text-emerald-600">Target API URL</label>
-                    <input type="url" placeholder="https://api.site.com/send" className="w-full px-4 py-3 rounded-xl border border-emerald-200 text-sm outline-none font-mono bg-emerald-50" value={emailConfig.apiUrl} onChange={(e) => setEmailConfig(prev => ({ ...prev, apiUrl: e.target.value }))} />
+                    <label className="text-[10px] font-bold uppercase text-red-600">Target API URL</label>
+                    <input type="url" placeholder="https://api.site.com/send" className="w-full px-4 py-3 rounded-xl border border-red-200 text-sm outline-none font-mono bg-red-50" value={emailConfig.apiUrl} onChange={(e) => setEmailConfig(prev => ({ ...prev, apiUrl: e.target.value }))} />
                   </div>
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between text-[10px] font-bold uppercase text-emerald-600"><label>Headers</label><button onClick={addHeader} className="bg-white text-emerald-600 px-2 py-0.5 rounded border border-emerald-200">Add Header</button></div>
-                    <div className="space-y-2">{emailConfig.headers.map((h) => (<div key={h.id} className="flex gap-1 items-start"><div className="flex-1 space-y-1"><input type="text" placeholder="Key" className="w-full px-2 py-1.5 rounded bg-white border border-emerald-100 text-xs font-mono" value={h.key} onChange={(e) => updateHeader(h.id, 'key', e.target.value)} /><input type="text" placeholder="Value" className="w-full px-2 py-1.5 rounded bg-white border border-emerald-100 text-xs font-mono" value={h.value} onChange={(e) => updateHeader(h.id, 'value', e.target.value)} /></div><button onClick={() => setEmailConfig(prev => ({ ...prev, headers: prev.headers.filter(x => x.id !== h.id) }))} className="p-1 text-emerald-300 hover:text-red-500"><X className="w-4 h-4" /></button></div>))}</div>
+                    <div className="flex items-center justify-between text-[10px] font-bold uppercase text-red-600"><label>Headers</label><button onClick={addHeader} className="bg-primary-100 text-primary-800 px-2 py-0.5 rounded border border-primary-200 hover:opacity-80">Add Header</button></div>
+                    <div className="space-y-2">{emailConfig.headers.map((h) => (<div key={h.id} className="flex gap-1 items-start"><div className="flex-1 space-y-1"><input type="text" placeholder="Key" className="w-full px-2 py-1.5 rounded bg-white border border-red-100 text-xs font-mono" value={h.key} onChange={(e) => updateHeader(h.id, 'key', e.target.value)} /><input type="text" placeholder="Value" className="w-full px-2 py-1.5 rounded bg-white border border-primary-100 text-xs font-mono" value={h.value} onChange={(e) => updateHeader(h.id, 'value', e.target.value)} /></div><button onClick={() => setEmailConfig(prev => ({ ...prev, headers: prev.headers.filter(x => x.id !== h.id) }))} className="p-1 text-primary-300 hover:text-red-500"><X className="w-4 h-4" /></button></div>))}</div>
                   </div>
                 </div>
                 <div className="space-y-4">
@@ -1131,11 +1131,11 @@ const App = () => {
                   <div className="space-y-1"><label className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Body</label><textarea rows="5" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none bg-gray-50" value={emailConfig.body} onChange={(e) => setEmailConfig(prev => ({ ...prev, body: e.target.value }))} /></div>
                 </div>
               </div>
-              <button disabled={isSending || !emailConfig.apiUrl} onClick={sendBulkEmails} className={`w-full py-4 rounded-xl font-bold text-white shadow-lg transition-all flex items-center justify-center gap-2 ${isSending || !emailConfig.apiUrl ? 'bg-gray-400' : 'bg-gradient-to-r from-emerald-600 to-teal-600'}`}>
+              <button disabled={isSending || !emailConfig.apiUrl} onClick={sendBulkEmails} className={`w-full py-4 rounded-xl font-bold text-white hover:opacity-80 shadow-lg transition-all flex items-center justify-center gap-2 ${isSending || !emailConfig.apiUrl ? 'bg-gray-400' : 'bg-gradient-to-r from-primary-600 to-primary-500'}`}>
                 {isSending ? <><Loader2 className="w-5 h-5 animate-spin" /> Sending...</> : <><Send className="w-5 h-5" /> Bulk Send Email</>}
               </button>
 
-              <button onClick={openEmailStatusModal} className="w-full py-3 rounded-xl font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 shadow-sm transition-all flex items-center justify-center gap-2 hover:bg-emerald-100">
+              <button onClick={openEmailStatusModal} className="w-full py-3 rounded-xl font-bold text-primary-600 bg-primary-50 border border-primary-200 shadow-sm transition-all flex items-center justify-center gap-2 hover:bg-primary-100">
                 <Mail className="w-4 h-4" /> View Email Status
               </button>
             </>
@@ -1159,7 +1159,7 @@ const App = () => {
         {/* Documentation button in top corner */}
         <button
           onClick={() => setShowDocumentation(true)}
-          className="absolute top-4 right-4 bg-gray-200 text-gray-700 px-3 py-2 rounded-lg font-bold flex items-center gap-2 hover:bg-gray-300 text-sm z-10"
+          className="absolute top-4 right-4 bg-primary-200 text-primary-700 px-3 py-2 rounded-lg font-bold flex items-center gap-2 hover:bg-primary-300 text-sm z-10"
         >
           <FileText className="w-4 h-4" /> Documentation
         </button>
@@ -1169,7 +1169,7 @@ const App = () => {
             <div className="absolute top-4 right-4 z-20">
               <button
                 onClick={() => setShowDocumentation(false)}
-                className="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg font-bold flex items-center gap-2 hover:bg-gray-300 text-sm"
+                className="bg-primary-200 text-primary-700 px-3 py-2 rounded-lg font-bold flex items-center gap-2 hover:bg-primary-300 text-sm"
               >
                 <X className="w-4 h-4" /> Close Docs
               </button>
@@ -1187,13 +1187,13 @@ const App = () => {
               </div>
 
               <div className="flex gap-2">
-                <button onClick={generatePreview} className="flex items-center gap-2 px-4 py-2.5 bg-purple-600 text-white rounded-full shadow-md hover:bg-purple-700 text-xs font-bold">
+                <button onClick={generatePreview} className="flex items-center gap-2 px-4 py-2.5 bg-primary-600 text-white rounded-full shadow-md hover:bg-primary-700 text-xs font-bold">
                   <ImageIcon className="w-3.5 h-3.5" /> Preview
                 </button>
-                <button onClick={handleSingleExport} disabled={isExporting} className="flex items-center gap-2 px-4 py-2.5 bg-indigo-600 text-white rounded-full shadow-md hover:bg-indigo-700 text-xs font-bold disabled:bg-gray-400">
+                <button onClick={handleSingleExport} disabled={isExporting} className="flex items-center gap-2 px-4 py-2.5 bg-green-600 text-white rounded-full shadow-md hover:bg-green-700 text-xs font-bold disabled:bg-gray-400">
                   {isExporting ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Download className="w-3.5 h-3.5" />} Export Current
                 </button>
-                <button onClick={handleSingleEmail} disabled={isSending || !emailConfig.apiUrl} className="flex items-center gap-2 px-4 py-2.5 bg-emerald-600 text-white rounded-full shadow-md hover:bg-emerald-700 text-xs font-bold disabled:bg-gray-400">
+                <button onClick={handleSingleEmail} disabled={isSending || !emailConfig.apiUrl} className="flex items-center gap-2 px-4 py-2.5 bg-red-600 text-white rounded-full shadow-md hover:bg-red-700 text-xs font-bold disabled:bg-gray-400">
                   {isSending ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Mail className="w-3.5 h-3.5" />} Send Email
                 </button>
               </div>
@@ -1318,7 +1318,7 @@ const App = () => {
       {emailStatusModalOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl shadow-xl w-full max-w-4xl max-h-[80vh] overflow-hidden flex flex-col">
-            <div className="bg-emerald-600 p-4 flex justify-between items-center">
+            <div className="bg-primary-600 p-4 flex justify-between items-center">
               <h3 className="text-white font-bold flex items-center gap-2">
                 <Mail className="w-5 h-5" /> Email Status Report
               </h3>
@@ -1361,7 +1361,7 @@ const App = () => {
                             disabled={status.success === null}
                             className={`px-3 py-1 rounded text-xs transition-colors ${status.success === null
                               ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
-                              : 'bg-indigo-600 text-white hover:bg-indigo-700'
+                              : 'bg-primary-600 text-white hover:bg-primary-700'
                               }`}
                           >
                             Retry
@@ -1442,7 +1442,7 @@ const App = () => {
               </button>
               <button
                 onClick={handleSingleExport}
-                className="ml-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-medium flex items-center gap-2"
+                className="ml-4 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-medium flex items-center gap-2"
               >
                 <Download className="w-4 h-4" /> Download
               </button>

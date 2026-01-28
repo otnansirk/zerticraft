@@ -1177,7 +1177,7 @@ const App = () => {
             <DocumentationPage />
           </div>
         ) : baseTemplate ? (
-          <div className="w-full max-w-5xl flex flex-col items-center gap-6">
+          <div className="w-full max-w-5xl flex flex-col items-center gap-6 mt-16">
             <div className="flex flex-wrap items-center justify-center gap-3">
               <div className="flex items-center gap-4 bg-white px-4 py-2.5 rounded-full shadow-md border border-gray-200">
                 <button disabled={activeParticipantIndex === 0} onClick={() => setActiveParticipantIndex(p => p - 1)} className="p-1 disabled:opacity-20 transition-opacity hover:text-indigo-600"><ChevronLeft className="w-4 h-4" /></button>
